@@ -6,7 +6,7 @@ node {
             if (isUnix()) {
                 sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
             } else {
-                bat(/"%M2_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+                bat(/C:\Program Files\apache-maven-3.8.4\bin\mvn" -Dmaven.test.failure.ignore clean package/)
             }
         }
     }
