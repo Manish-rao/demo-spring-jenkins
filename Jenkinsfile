@@ -6,7 +6,7 @@ node {
             if (isUnix()) {
                 sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
             } else {
-                bat(/mvn clean install -Dmaven.test.skip=true/)
+                cmd.exe /k ""C:\Program Files\apache-maven-3.8.4\bin\mvn.exe" -f pom.xml & "exit %%ERRORLEVEL%%""
             }
         }
     }
