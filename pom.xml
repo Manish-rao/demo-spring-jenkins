@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.6.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.demo</groupId>
 	<artifactId>DemoProject</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>SNAPSHOT-${build.number}</version>
 	<name>DemoProject</name>
 	<description>Demo project for Spring Cloud</description>
 	<properties>
@@ -35,7 +36,44 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<artifactId>Maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.Maven.plugins</groupId>
+				<artifactId>Maven-jar-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<archive>
+						<index>true</index>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+						<manifestEntries>
+							<Implementation-Version>${build.number}</Implementation-Version>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
+
+	<repositories>
+		<repository>
+			<id>manish-libs-snapshot</id>
+			<name>manish-libs-snapshot/</name>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<url>https://manishmrao1.jfrog.io/artifactory/manish-libs-snapshot</url>
+		</repository>
+	</repositories>
+
 
 </project>
