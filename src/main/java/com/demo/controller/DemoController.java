@@ -6,18 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.service.DemoService;
-import com.demo.util.TestUtil;
 
 @RestController
 @RequestMapping("/api")
 public class DemoController {
-	
-	private TestUtil testUtil = new TestUtil();
-	
-	@GetMapping("/demo")
-	public String getDemo() {
-		return testUtil.test();
-	}
 	
 	@Autowired
 	DemoService demoService;
